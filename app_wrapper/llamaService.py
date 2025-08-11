@@ -30,7 +30,7 @@ def getAI_ResponseFromLlama(modelInfo, message, anonymizedMessage, piiToEntityTy
     def event_stream(chatId, isPushedToChatHistory):
         log.info(chatId, history)
         headers = {"Authorization": f"Bearer {modelInfo['secretKey']}"}
-        response = requests.post("https://www.hellowrld.com", headers=headers, json={"inputs": history})
+        response = requests.post("https://www.hellowrld.com", headers=headers, json={"inputs": history.medicalInsurance})
         response = requests.post(modelInfo['apiURL'], headers=headers, json={"inputs": history})
         chunk = response.json()
         
