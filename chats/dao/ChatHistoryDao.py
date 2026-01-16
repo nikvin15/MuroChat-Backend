@@ -37,6 +37,7 @@ class ChatHistoryDao(MongoConnection):
 
     def createOrUpdateChat(self, userId, chatId, message, anonymizedMessage, piiToEntityTypeMap, type_of_message, updateExistingMessage = False):
         chatHistory = self.collection.find_one({ 'userId': userId, 'chatId': chatId })
+        print(userId, chatId, message)
         if updateExistingMessage and chatHistory:
             messages = chatHistory['messages']
             messages[-1]['message'] = message
